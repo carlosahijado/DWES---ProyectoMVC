@@ -1,0 +1,27 @@
+.imagenlibros
+{
+	width: 100%;
+}
+p
+{
+	text-align:justify;
+}
+.iconos
+{
+	float:right;
+}
+.comentarios
+{
+	background-color:#E2E6E7;
+}
+.nombrecomentario
+{
+	text-decoration:underline;
+	font-size:0.8em;
+}
+.borrarcomentario
+{
+	float:right;
+	width:100%;
+	height:100%;
+}
