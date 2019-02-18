@@ -1,0 +1,48 @@
+<IfModule mod_rewrite.c>
+	# activamos el modulo rewrite de apache
+	RewriteEngine on
+	
+	#ir al controlador error sin no encuentra la pagina
+	ErrorDocument 404 http://localhost/ProyectoMVC/error/index
+	
+	#no mostrar ni ficheros ni directorios
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-f	
+	RewriteRule ^noticia/?([^/]*)/?([^/]*)?/?([^/]*)?$ index.php?controlador=noticia&accion=$1&idnoticia=$2 [QSA,L]
+
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-f	
+	RewriteRule ^comentario/borrarComentarioLibro/?([^/]*)?/?([^/]*)?$ index.php?controlador=comentario&accion=borrarComentarioLibro&idcomentario=$1 [QSA,L]
+
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-f	
+	RewriteRule ^comentario/borrarComentarioNoticia/?([^/]*)?/?([^/]*)?$ index.php?controlador=comentario&accion=borrarComentarioNoticia&idcomentario=$1 [QSA,L]
+
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-f	
+	RewriteRule ^comentario/insertarComentarioLibro/?([^/]*)?/?([^/]*)?$ index.php?controlador=comentario&accion=insertarComentarioLibro&idlibro=$1 [QSA,L]
+
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-f	
+	RewriteRule ^comentario/?([^/]*)/?([^/]*)?/?([^/]*)?$ index.php?controlador=comentario&accion=$1&idnoticia=$2 [QSA,L]
+
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-f	
+	RewriteRule ^libro/genero/?([^/]*)?/?([^/]*)?$ index.php?controlador=libro&accion=genero&genero=$1 [QSA,L]
+
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-f	
+	RewriteRule ^libro/?([^/]*)/?([^/]*)?/?([^/]*)?$ index.php?controlador=libro&accion=$1&idlibro=$2 [QSA,L]
+
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-f	
+	RewriteRule ^cookie/?([^/]*)/?([^/]*)?/?([^/]*)?$ index.php?controlador=cookie&accion=$1&idioma=$2 [QSA,L]
+
+
+	#no mostrar ni ficheros ni directorios
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-f	
+	RewriteRule ^(.*)/(.*)$ index.php?controlador=$1&accion=$2 [QSA,L]
+
+	
+</IfModule>
